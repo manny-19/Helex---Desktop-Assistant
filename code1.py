@@ -53,7 +53,7 @@ def takeCommand():
     return query
 
 if __name__ == "__main__":
-    wishMe()
+    #wishMe()
     #while True:
     if 1:
         query = takeCommand().lower()
@@ -90,5 +90,9 @@ if __name__ == "__main__":
         elif 'the time' in  query:
             strTime = datetime.datetime.now().strftime("%H:%M:%S")    
             speak(f"Mam, the time is {strTime}")
-            
+        
+        elif 'open visual studio code' in query:
+            speak('Opening V S Code')
+            code_path = "C:\\Users\\HP\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
+            os.startfile(code_path)
             

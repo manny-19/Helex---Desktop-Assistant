@@ -1,6 +1,8 @@
 import pyttsx3           # -m venv PATH OF FOLDER\venv  
 import datetime                  # use this to create virtual env if error in importing libraries
 import speech_recognition as sr
+import wikipedia #pip install wikipedia
+
 engine  = pyttsx3.init('sapi5') # sapi5 is microsoft speech API , to use inbuilt voices
 voices = engine.getProperty('voices')
 #print(voices)         
@@ -22,7 +24,7 @@ def wishme():
     else:
         speak("Good Evening!")    
     
-    speak("Hey, I am Helex. PLease tell me how can I help you")
+    speak("Hi, I am Helex. PLease tell me how can I help you")
     
 def takeCommand():
     #It takes microphone input from the user and returns string output
@@ -30,13 +32,13 @@ def takeCommand():
     r = sr.Recognizer()
     with sr.Microphone() as source:
         print("Listening...")
-        r.pause_threshold = 1
+        r.pause_threshold = 1  # after pause of how many seconds should it stop listening
         audio = r.listen(source)
 
     try:
         print("Recognizing...")    
-        query = r.recognize_google(audio, language='en-in')
-        print(f"User said: {query}\n")
+        query = r.recognize_google(audio, language='en-in') #language input english india
+        print(f"User said: {query}\n")  
 
     except Exception as e:
         # print(e)    
@@ -46,4 +48,8 @@ def takeCommand():
     
 if __name__ == '__main__':
     wishme()
-    takeCommand()
+    while True:
+        query = takeCommand().lower()
+        if 'on google' in query:
+            speak('Searching on Wikipedia')
+            query = query.            

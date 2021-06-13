@@ -7,3 +7,8 @@ ssh-keygen -t ed25519 -C "manvi019arora@gmail.com"
 tail <path to id_rsa.pub> #add this key to your github account
 git remote add origin <ssh url.git>
 git push origin master
+
+to add chenges to github
+git add .
+git commit -m "cdsvv"
+git push origin master

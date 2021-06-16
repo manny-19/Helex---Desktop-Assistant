@@ -5,6 +5,7 @@ import wikipedia #pip install wikipedia
 from googlesearch import search
 import webbrowser as wb 
 import os
+from PyDictionary import PyDictionary
 
 wb.register('chrome',None)
 
@@ -30,7 +31,7 @@ def wishMe():
     else:
         speak("Good Evening!")  
 
-    speak("Hey, I am Helex. Please tell me how may I help you")       
+    speak("I am Helex. Please tell me how may I help you")       
 
 def takeCommand():
     #It takes microphone input from the user and returns string output
@@ -96,5 +97,11 @@ if __name__ == "__main__":
             code_path = "C:\\Users\\HP\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
             os.startfile(code_path)
             
-        
+        elif 'meaning of' in query:
+            speak('according to google')
+            query = query.replace('meaning of',"")
+            for j in search(query, tld="co.in", num=1, stop=10, pause=2):
+                wb.register('chrome',None)
+                wb.open(j)
+                break
             

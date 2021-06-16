@@ -98,10 +98,25 @@ if __name__ == "__main__":
             os.startfile(code_path)
             
         elif 'meaning of' in query:
-            speak('according to google')
             query = query.replace('meaning of',"")
-            for j in search(query, tld="co.in", num=1, stop=10, pause=2):
-                wb.register('chrome',None)
-                wb.open(j)
+            dic = PyDictionary()
+            word = dic.meaning(query)
+            for s in word:
+                print(word[s])
+                speak("The meaning" + str(word[s]))
                 break
             
+        elif 'open pycharm' in query:
+            speak('opening PyCharm')
+            codepath = '"C:\\Program Files\\JetBrains\\PyCharm Community Edition 2019.3.4\\bin\\pycharm64.exe"'
+            os.startfile(codepath)
+            
+        elif 'open calculator' in query:
+            speak('opening calculator')
+            path = 'C:\\Windows\\System32\\calc.exe'
+            os.startfile(path)
+            
+        elif 'open whatsapp' in query:
+            speak('opening whatsapp')
+            path = 'C:\\Users\\HP\\AppData\\Local\\WhatsApp\\WhatsApp.exe'
+            os.startfile(path)    
